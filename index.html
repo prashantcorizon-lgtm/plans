@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deepak & Co. — Plans</title>
+  <meta name="description" content="Premium career plans — Basic, Standard, Premium. Personal recruiter, interview coaching, targeted outreach, and negotiation support." />
+  <style>
+    :root{
+      --beige:#f5f0e6;
+      --green:#0b3d2e;
+      --green-2:#0f5641;
+      --ivory:#fffefa;
+      --muted:#5f6b63;
+      --card-shadow:0 12px 40px rgba(11,61,46,0.08);
+      --glass: rgba(255,255,255,0.6);
+      --radius:18px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    /* page layout */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,var(--beige) 0%, #f9f7f3 100%);color:var(--green);-webkit-font-smoothing:antialiased}
+    .container{max-width:1200px;margin:0 auto;padding:48px 24px}
+
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px;border-radius:14px;background:var(--ivory);box-shadow:var(--card-shadow);position:relative}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--green-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:13px;color:var(--muted)}
+
+    /* hero */
+    .hero{display:flex;gap:24px;margin-top:28px;align-items:center}
+    .hero-left{flex:1}
+    .eyebrow{display:inline-block;background:rgba(11,61,46,0.08);color:var(--green);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+    .title{font-size:36px;line-height:1.05;margin:14px 0;font-weight:800}
+    .lead{color:var(--muted);max-width:68ch;font-size:16px}
+    .hero-cta{margin-top:20px;display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:0;cursor:pointer}
+    .btn-primary{background:var(--green);color:white;box-shadow:0 8px 26px rgba(11,61,46,0.18)}
+    .btn-outline{background:transparent;border:1px solid rgba(11,61,46,0.12);color:var(--green)}
+
+    /* decorative card */
+    .hero-right{width:420px}
+    .decor{background:linear-gradient(180deg, rgba(11,61,46,0.06), rgba(11,61,46,0.02));padding:18px;border-radius:18px}
+
+    /* grid of plans */
+    .grid3{display:grid;grid-template-columns:1fr;gap:24px;margin-top:36px}
+    .plan-card{background:white;border-radius:16px;padding:20px;box-shadow:var(--card-shadow);transition:transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s}
+    .plan-card:hover{transform:translateY(-12px);box-shadow:0 20px 60px rgba(11,61,46,0.12)}
+    .plan-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .price{font-weight:800;font-size:22px}
+    .pill{padding:6px 10px;border-radius:999px;background:rgba(11,61,46,0.06);font-weight:700;color:var(--green)}
+    .features{margin-top:12px;color:var(--muted)}
+
+    /* premium special */
+    .premium{background:linear-gradient(90deg,var(--green),var(--green-2));color:white;position:relative;overflow:hidden}
+    .premium .pill{background:rgba(255,255,255,0.12);color:white}
+    .premium .price{color:white}
+
+    /* floating badge */
+    .badge{position:absolute;top:-18px;right:18px;background:#f9f1e9;color:var(--green);padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px rgba(11,61,46,0.06)}
+
+    /* comparison table */
+    .compare{margin-top:36px;background:linear-gradient(180deg, rgba(11,61,46,0.03), rgba(11,61,46,0.01));padding:18px;border-radius:14px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:12px 10px;text-align:left;font-size:15px}
+    th{color:var(--muted);font-weight:700}
+    tr:nth-child(even) td{background:transparent}
+    .tick{color:var(--green);font-weight:800}
+
+    /* FAQ and testimonials */
+    .two-col{display:grid;grid-template-columns:1fr;gap:18px;margin-top:36px}
+    .card-quiet{background:transparent;padding:18px;border-radius:12px}
+    details summary{cursor:pointer;padding:12px;border-radius:12px;background:var(--ivory);font-weight:700}
+
+    /* animations */
+    @keyframes pulse {
+      0%{box-shadow:0 0 0 0 rgba(11,61,46,0.18)}
+      70%{box-shadow:0 0 0 18px rgba(11,61,46,0.03)}
+      100%{box-shadow:0 0 0 0 rgba(11,61,46,0)}
+    }
+    .call-btn{position:fixed;right:24px;bottom:22px;background:var(--green);color:white;padding:14px 18px;border-radius:999px;font-weight:800;z-index:999;box-shadow:0 14px 40px rgba(11,61,46,0.18);display:flex;gap:10px;align-items:center}
+    .call-btn .dot{width:10px;height:10px;border-radius:50%;background:#ff6b6b;animation:pulse 2.4s infinite}
+
+    /* responsive */
+    @media(min-width:860px){
+      .grid3{grid-template-columns:repeat(3,1fr)}
+      .hero{align-items:flex-start}
+      .two-col{grid-template-columns:1fr 420px}
+    }
+
+    /* subtle entrance */
+    .fade-up{opacity:0;transform:translateY(18px);animation:enter .6s forwards cubic-bezier(.2,.9,.2,1)}
+    .fade-up.delay-1{animation-delay:.12s}
+    .fade-up.delay-2{animation-delay:.18s}
+    .fade-up.delay-3{animation-delay:.24s}
+    @keyframes enter{to{opacity:1;transform:none}}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="fade-up">
+      <div class="brand">
+        <div class="logo">D&amp;C</div>
+        <div>
+          <h1>Deepak &amp; Co.</h1>
+          <p>Career Strategy · Personal Recruiting · Interview Coaching</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a class="btn btn-outline" href="#contact">Contact</a>
+        <a class="btn btn-primary" href="#plans">Book a call</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left fade-up delay-1">
+        <div class="eyebrow">Outcome-driven Placement</div>
+        <div class="title">Plans designed to move your career forward — with clarity, speed, and negotiation power.</div>
+        <p class="lead">Whether you're re-entering the market, leveling up, or seeking leadership roles, pick a plan that matches your timeline and ambition. All plans include a personal recruiter and data-backed placement tactics.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Schedule a free 30‑minute call</a>
+          <a class="btn btn-outline" href="#compare">Compare plans</a>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <div style="background:white;padding:14px;border-radius:12px;box-shadow:var(--card-shadow);min-width:140px;text-align:center">
+            <div style="font-size:12px;color:var(--muted)">Avg time to offer</div>
+            <div style="font-weight:800;font-size:18px">6–10 weeks</div>
+          </div>
+          <div style="background:white;padding:14px;border-radius:12px;box-shadow:var(--card-shadow);min-width:140px;text-align:center">
+            <div style="font-size:12px;color:var(--muted)">Success rate</div>
+            <div style="font-weight:800;font-size:18px">78%+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right fade-up delay-2">
+        <div class="decor">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg, #fef3e8, #fff) ;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--green)">★</div>
+            <div>
+              <div style="font-weight:800">Priority access</div>
+              <div style="color:var(--muted);font-size:14px;margin-top:6px">Dedicated recruiter response within 24 hours for premium customers.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#fbfbfa);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)">
+            <div style="font-weight:700">What you get</div>
+            <ul style="margin-top:8px;color:var(--muted);line-height:1.6">
+              <li>Profile overhaul & tailored resumes</li>
+              <li>Targeted outreach to hiring teams</li>
+              <li>Mock interviews and negotiation support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans grid -->
+    <section id="plans" class="fade-up delay-3">
+      <div class="grid3">
+
+        <div class="plan-card">
+          <div class="plan-header">
+            <div>
+              <div style="font-weight:800;font-size:18px">Basic</div>
+              <div class="price">$999 <span style="font-size:13px;color:var(--muted);font-weight:600">+ 10% success fee</span></div>
+            </div>
+            <div class="pill">Essentials</div>
+          </div>
+          <p style="margin-top:12px;color:var(--muted)">Everything you need to get visible: resume, LinkedIn refresh, and broad outreach.</p>
+          <ul class="features">
+            <li>ATS-optimized resume & profile</li>
+            <li>LinkedIn refresh & cover letter</li>
+            <li>150+ targeted applications</li>
+            <li>12 months active marketing</li>
+            <li>5 structured interview sessions</li>
+          </ul>
+          <div style="margin-top:14px">
+            <a class="btn btn-primary" href="tel:+1234567890">Call to buy — +1 234 567 890</a>
+          </div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-header">
+            <div>
+              <div style="font-weight:800;font-size:18px">Standard</div>
+              <div class="price">$1999 <span style="font-size:13px;color:var(--muted);font-weight:600">+ 10% success fee</span></div>
+            </div>
+            <div class="pill">Most chosen</div>
+          </div>
+          <p style="margin-top:12px;color:var(--muted)">High-touch placement until you accept an offer. Technical training included.</p>
+          <ul class="features">
+            <li>Everything in Basic</li>
+            <li>Marketing until placement</li>
+            <li>Technical training — bespoke curriculum</li>
+            <li>Mock interviews until placement</li>
+            <li>Offer review & negotiation support</li>
+          </ul>
+          <div style="margin-top:14px">
+            <a class="btn btn-outline" href="#contact">Request standard — Book call</a>
+          </div>
+        </div>
+
+        <div class="plan-card premium">
+          <div class="badge">Priority</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <div>
+              <div style="font-weight:800;font-size:18px">Premium</div>
+              <div class="price">$2999 <span style="font-size:13px;opacity:0.9">+ 10% success fee</span></div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:800;font-size:20px;color:rgba(255,255,255,0.95)">Priority handling</div>
+            </div>
+          </div>
+
+          <p style="margin-top:12px;opacity:0.95">For senior leaders and anyone seeking strategic advantage — intensive branding, negotiation, and panel simulations.</p>
+          <ul style="margin-top:10px;color:rgba(255,255,255,0.95);line-height:1.6">
+            <li>Everything in Standard</li>
+            <li>Advanced personal branding & market mapping</li>
+            <li>Enterprise negotiation & compensation strategy</li>
+            <li>Leadership interviews & panel simulations</li>
+            <li>Priority recruiter bandwidth & outreach acceleration</li>
+          </ul>
+
+          <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+            <a class="btn btn-primary" href="#contact" style="background:white;color:var(--green);padding:10px 16px;border-radius:12px">Choose Premium</a>
+            <a class="btn btn-outline" href="tel:+1234567890">Call to buy</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- comparison -->
+      <div id="compare" class="compare">
+        <h3 style="margin:0 0 12px 0">Side-by-side comparison</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Basic</th>
+              <th>Standard</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Dedicated recruiter</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+            <tr><td>Marketing duration</td><td>12 months</td><td>Until placement</td><td>Until placement + priority</td></tr>
+            <tr><td>Technical training</td><td>—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+            <tr><td>Mock interviews</td><td>5 sessions</td><td class="tick">Until placement</td><td class="tick">Panel & leadership</td></tr>
+            <tr><td>Negotiation support</td><td>—</td><td class="tick">✓</td><td class="tick">Advanced</td></tr>
+            <tr><td>Priority outreach</td><td>—</td><td>—</td><td class="tick">✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ + Testimonials -->
+      <div class="two-col">
+        <div>
+          <div class="card card-quiet">
+            <h3 style="margin-top:0">Frequently asked questions</h3>
+            <details style="margin-top:12px"><summary>How quickly can you start?</summary><div style="padding:12px;color:var(--muted)">We typically begin with a discovery call within 48 hours and deliver a first-draft resume within 3–5 business days.</div></details>
+            <details style="margin-top:8px"><summary>How does the success fee work?</summary><div style="padding:12px;color:var(--muted)">The 10% success fee applies to accepted offers and covers negotiation and post-offer support.</div></details>
+            <details style="margin-top:8px"><summary>Do you support international placements?</summary><div style="padding:12px;color:var(--muted)">Yes — we work with candidates pursuing roles in different countries and assist with employer coordination on relocation and visas.</div></details>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h3 style="margin-top:0">What our candidates say</h3>
+            <div style="margin-top:12px;color:var(--muted)">
+              <strong>Asha R. — Product Manager</strong>
+              <p style="margin:6px 0;color:var(--muted)">"Clear, no‑nonsense coaching. I received two strong offers within two months."</p>
+            </div>
+            <div style="margin-top:12px;color:var(--muted)">
+              <strong>Rohan K. — SWE</strong>
+              <p style="margin:6px 0;color:var(--muted)">"The recruiter coordination made the difference — quicker interviews and better offers."</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </section>
+
+    <!-- contact CTA -->
+    <section id="contact" style="margin-top:36px">
+      <div style="background:linear-gradient(180deg, rgba(11,61,46,0.03), rgba(11,61,46,0.01));padding:22px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:800;font-size:20px">Ready to move forward?</div>
+          <div style="color:var(--muted);margin-top:6px">Book a free 30‑minute strategy call and we'll map a clear path to your next role.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a class="btn btn-primary" href="https://calendly.com/your-calendly" target="_blank">Schedule a call</a>
+          <a class="btn btn-outline" href="tel:+1234567890">📞 Call +1 234 567 890</a>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:36px;text-align:center;color:var(--muted);font-size:13px">© <span id="year"></span> Deepak &amp; Co. · Privacy · Terms</footer>
+
+  </div>
+
+  <!-- persistent call button -->
+  <a class="call-btn" href="tel:+1234567890" aria-label="Call Deepak & Co.">
+    <span class="dot" aria-hidden></span>
+    <span style="font-weight:800">Call now</span>
+    <span style="opacity:0.85">+1 234 567 890</span>
+  </a>
+
+  <script>
+    // current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // small entrance delay for plan cards
+    document.querySelectorAll('.plan-card').forEach((el,i)=>{el.style.animation = `enter .5s ${0.08*i}s cubic-bezier(.2,.9,.2,1) both`});
+
+    // accessibility: keyboard focus for call button
+    document.querySelector('.call-btn').addEventListener('keydown', (e)=>{ if(e.key === 'Enter') location.href = 'tel:+1234567890'; });
+  </script>
+
+  <style>
+    @keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  </style>
+</body>
+</html>
